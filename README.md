@@ -1,0 +1,25 @@
+# Nodejs app with Docker/typescript/postgres/Prisma
+
+## Getting Started
+
+ts.config in beginning using pnpm
+
+` npm install -g pnpm`
+
+`pnpm init`
+
+`pnpm add typescript`
+
+`pnpm add --save-dev @tsconfig/node18`
+
+`pnpm add --save-dev @types/node` for node API
+
+`SWC` for complie js with ts
+
+`pnpm add --save-dev @swc/cli @swc/core rimraf`
+
+## Learnings Notes
+
+`rimraf` is utility package, help you do what on in Unix world would be RM RF to just completely wipe out directory and nice thing about using this is it works cross-plateform. If you’ve got windows folks working on this project too, and you want to delete a directory then this will work in the windows world as well.
+
+`"scourceMaps": "inline"` when compiling from ts to js it’s going to set up some Source Maps actually embedded inside file, it helps us when we get to working on debugging. We want to be able to debug our code using our Rich debugger tools that we have in vs code because it’s going to be running in Docker there’s a little bit hoisting setup to get that to work in the `SourceMap inline.`it is very configuration in order to make that work and make that happen and allow us to debug something in vs code, and actually
