@@ -41,3 +41,10 @@ services:
 ```
 
 4. Prisma
+   `pnpm add --save-dev prisma`
+   ` pnpm add @prisma/client`
+   `pnpx prisma init` -- it will use the Prisma CLI and initialize the files we need to set up Prisma in our env here.
+   `slug String @unique` - if you have blog post you might want fancy URL, so we set string as unique. It is expecting that we have a unique index in the DB.
+   About naming, make my model name `Post` singular and make my database name plural `posts`
+   Done the model create, `pnpx prisma generate`, this is going to generate a specific client for your specific project for your specific models.
+   Note: if we change models inside, we have to rebuild docker image, so we can get new client. Another option is you could add this to the build script and build every time you start the docker server.
