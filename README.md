@@ -26,3 +26,18 @@ ts.config in beginning using pnpm
 
 3. In package.json, "start:docker": "pnpm build && node --inspect=0.0.0.0 dist/index.js", it is just going to enable debugging
    In `launch.json` file, `"request": "attach"` and `"port": 9229` is going to attach to the debugger that’s running in the container.
+
+4.A nice thing to have in Docker compose land. Every service name then becomes to DNS name, so you are inside the docker evn trying to connect to one service to another, you can just connect to the DNS name `backend` or the DNS name `postgres`.
+
+```yml
+services:
+   backend:
+      build: .
+      ports:
+      ...
+      environment:
+      DATABASE_URL: postgres://postgres@postgres:5432/webapp_dev
+      PORT: 5000
+```
+
+4. Prisma
