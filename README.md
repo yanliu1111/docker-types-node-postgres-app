@@ -20,6 +20,9 @@ ts.config in beginning using pnpm
 
 ## Learnings Notes
 
-`rimraf` is utility package, help you do what on in Unix world would be RM RF to just completely wipe out directory and nice thing about using this is it works cross-plateform. If you’ve got windows folks working on this project too, and you want to delete a directory then this will work in the windows world as well.
+1. `rimraf` is utility package, help you do what on in Unix world would be RM RF to just completely wipe out directory and nice thing about using this is it works cross-plateform. If you’ve got windows folks working on this project too, and you want to delete a directory then this will work in the windows world as well.
 
-`"scourceMaps": "inline"` when compiling from ts to js it’s going to set up some Source Maps actually embedded inside file, it helps us when we get to working on debugging. We want to be able to debug our code using our Rich debugger tools that we have in vs code because it’s going to be running in Docker there’s a little bit hoisting setup to get that to work in the `SourceMap inline.`it is very configuration in order to make that work and make that happen and allow us to debug something in vs code, and actually
+2. `"scourceMaps": "inline"` when compiling from ts to js it’s going to set up some Source Maps actually embedded inside file, it helps us when we get to working on debugging. We want to be able to debug our code using our Rich debugger tools that we have in vs code because it’s going to be running in Docker there’s a little bit hoisting setup to get that to work in the `SourceMap inline.`it is very configuration in order to make that work and make that happen and allow us to debug something in vs code, and actually
+
+3. In package.json, "start:docker": "pnpm build && node --inspect=0.0.0.0 dist/index.js", it is just going to enable debugging
+   In `launch.json` file, `"request": "attach"` and `"port": 9229` is going to attach to the debugger that’s running in the container.
