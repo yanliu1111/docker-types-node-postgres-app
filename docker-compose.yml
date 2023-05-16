@@ -9,6 +9,8 @@ services:
 
   backend:
     build: .
+    depends_on:
+      - postgres
     ports:
       - 5000:5000
       - 9229:9229 # for debugging
@@ -17,8 +19,6 @@ services:
       - /usr/src/app/.pnpm-store
       - /usr/src/app/node_modules
     command: pnpm start:docker
-    depends_on:
-      - postgres
     environment:
       DATABASE_URL: postgres://postgres@postgres:5432/webapp_dev
       PORT: 5000

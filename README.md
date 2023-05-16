@@ -63,3 +63,21 @@ services:
    We're going to use a package called nanoid to create very specific length strings, so every single one of IDs is going to be 16charactor id.
    `table.specificType('id','CHAR(16) PRIMARY KEY DEFAULT ${nanoid()}')`<br>
    `pnpm add nanoid`
+
+## Troubleshooting:
+
+Close to the database seeding, I got this error:
+
+```
+Invalid `db.post.createMany()` invocation in
+/usr/src/app/scripts/seed/dev.ts:4:17
+  1 import db, { genId } from '../../src/modules/db';
+  2
+  3 const run = async () => {
+→ 4   await db.post.createMany(
+The table `public.posts` does not exist in the current database.
+```
+
+Thank you so much for [Kevien Wade](https://www.youtube.com/watch?v=yuTrHeDYY3E&ab_channel=KevinWade) answering my question. Really appreciate it! Then, I run `pnpm  docker:db:migrate` to create the table first, then run `pnpm run seed:dev` to seed the data. It works!🎉 🎉 🎉 Posts run at http://localhost:5000/ successfully.
+
+👸 If this repo is helpful, please give me a star✨. Thank you so much!
