@@ -3,13 +3,13 @@ import { Knex } from 'knex';
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('posts', (table) => {
     table.specificType('id', 'CHAR(16)').primary();
-    table.string('slug').notNullable().unique();
+    table.string('slug', 60).notNullable().unique();
     //slug represents the url of the post
-    table.string('title').notNullable();
+    table.string('title', 80).notNullable();
     table.text('content');
-    table.timestamp('published_at').index();
-    table.timestamp('created_at').defaultTo(knex.fn.now()).notNullable();
-    table.timestamp('updated_at').defaultTo(knex.fn.now()).notNullable();
+    table.timestamp('publishedAt').index();
+    table.timestamp('createdAt').defaultTo(knex.fn.now()).notNullable();
+    table.timestamp('updatedAt').defaultTo(knex.fn.now()).notNullable();
   });
 }
 

@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf dist && swc ./src -d dist",
-    "db:console": "docker compose run postgres psql -h localhost -U postgres -d webapp_dev",
+    "db:console": "docker compose run postgres psql -h postgres -U postgres -d webapp_dev",
     "db:migrate": "knex migrate:latest",
     "docker:db:migrate": "docker compose run backend pnpm db:migrate",
     "docker:db:migrate:undo": "docker compose run backend pnpx knex migrate:down",
     "docker:seed:dev": "docker compose run backend pnpm ts-node scripts/seed/dev.ts",
     "rebuild:be": "docker compose build backend && docker compose rm --force --stop backend && docker compose up -d backend",
+    "seed:dev": "docker compose run backend pnpm ts-node scripts/seed/dev.ts",
     "start": "node dist/index.js",
     "start:docker": "pnpm build && node --inspect=0.0.0.0 dist/index.js",
     "watch": "watchy --no-init-spawn --debounce 1 -w src -- docker-compose restart backend"
@@ -23,6 +24,7 @@
     "express": "^4.18.2",
     "knex": "^2.4.2",
     "morgan": "^1.10.0",
+    "nanoid": "^3.3.6",
     "pg": "^8.11.0",
     "typescript": "^5.0.4"
   },

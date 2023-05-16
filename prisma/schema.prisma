@@ -16,9 +16,9 @@ model Post {
   title String
   content String?
   publishedAt DateTime?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   @@index([publishedAt])
-  @@map("posts")
+  @@map(name: "posts")
 }

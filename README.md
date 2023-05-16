@@ -40,7 +40,8 @@ services:
       PORT: 5000
 ```
 
-5. Prisma
+5. `Prisma` is a tool that allows you to define your database models in a very specific way and then it will generate a client for you that you can use to interact with your database. It’s kind of like an ORM, Object Relational Mapper.
+
    `pnpm add --save-dev prisma`
    ` pnpm add @prisma/client`
    `pnpx prisma init` -- it will use the Prisma CLI and initialize the files we need to set up Prisma in our env here.
@@ -49,7 +50,7 @@ services:
    Done the model create, `pnpx prisma generate`, this is going to generate a specific client for your specific project for your specific models.
    Note: if we change models inside, we have to rebuild docker image, so we can get new client. Another option is you could add this to the build script and build every time you start the docker server.
 
-6. Knex DB migration setup
+6. `Knex` DB migration setup
    `pnpm add knex pg`
    Using Prisma for orm and connect specifically for migrations. Connects migrations we also need the utility TS node which run ts files quickly and easily via node.
    `pnpm add --save-dev ts-node`
@@ -58,6 +59,7 @@ services:
 
    NOTE: When you choose for deploy, `rail` and `render` also have good ways of doing migrations and connects kind of the same way. So, if you want to do something that’s not supported by the higher level tools, then you can do it with connect.
 
-7. nanoid
+7. `nanoid`
    We're going to use a package called nanoid to create very specific length strings, so every single one of IDs is going to be 16charactor id.
-   `table.specificType('id','CHAR(16) PRIMARY KEY DEFAULT ${nanoid()}')`
+   `table.specificType('id','CHAR(16) PRIMARY KEY DEFAULT ${nanoid()}')`<br>
+   `pnpm add nanoid`
